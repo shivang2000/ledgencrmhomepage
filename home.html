@@ -14,16 +14,16 @@
         <meta name="format-detection" content="telephone=no" />
 
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="assets/css/shards.min.css" />
-        <link rel="stylesheet" href="assets/css/animate.min.css" />
+        <link rel="stylesheet" href="static/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="static/css/shards.min.css" />
+        <link rel="stylesheet" href="static/css/animate.min.css" />
         <link
             rel="stylesheet"
-            href="assets/font-awesome/css/font-awesome.min.css"
+            href="static/font-awesome/css/font-awesome.min.css"
         />
-        <link rel="stylesheet" href="assets/css/home.css" />
-        <link rel="stylesheet" href="assets/css/common.css" />
-        <link rel="stylesheet" href="assets/css/animation.css" />
+        <link rel="stylesheet" href="static/css/home.css" />
+        <link rel="stylesheet" href="static/css/common.css" />
+        <link rel="stylesheet" href="static/css/animation.css" />
     </head>
 
     <body>
@@ -37,13 +37,13 @@
                 <a class="navbar-brand" href="#">
                     <img
                         height="30"
-                        src="assets/images/cf-logo - Copy.png"
+                        src="static/images/cf-logo - Copy.png"
                         class="align-center img-responsive brand-logo1"
                         alt=""
                     />
                     <img
                         height="30"
-                        src="assets/images/cf-logo.png"
+                        src="static/images/cf-logo.png"
                         class="align-center img-responsive brand-logo2"
                         alt=""
                     />
@@ -149,17 +149,36 @@
                                 <a class="dropdown-item" href="#">CONTACT US</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a
-                                class="nav-link btn btn-info text-white font-weight-bold ml-2"
-                                type="button"
-                                href="{% url 'register' %}"
-                            >
-                                Join As a Partner asd
-                            </a>
-                        </li>
+                        {% if not request.user.username %}
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link btn btn-info text-white font-weight-bold ml-2"
+                                    type="button"
+                                    href="{% url 'register' %}"
+                                >
+                                    Join As a Partner 
+                                </a>
+                            </li>
+                        {% endif %}
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
+                        {% if  request.user.username %}
+                        <li class="nav-item mr-5">
+                            <a class="nav-link" href="{% url 'logout' %}">
+                                <i
+                                    class="fa btn btn-info mr-2 row align-self-center"
+                                    aria-hidden="true"
+                                ><strong>Logout</strong></i>
+                            </a>
+                        </li><li class="nav-item mr-5">
+                            <a class="nav-link" href="{% url 'reset_password' %}">
+                                <i
+                                    class="fa btn btn-info mr-2 row align-self-center"
+                                    aria-hidden="true"
+                                ><strong>Change Password</strong></i>
+                            </a>
+                        </li>
+                        {% else %}
                         <li class="nav-item mr-5">
                             <a class="nav-link" href="{% url 'login' %}">
                                 <i
@@ -168,6 +187,7 @@
                                 ><strong>Login</strong></i>
                             </a>
                         </li>
+                        {% endif %}
                         <li class="nav-item mr-5">
                             <a class="nav-link" href="tel:8828824242">
                                 <i
@@ -195,7 +215,9 @@
                         <a href="#">HOME</a>
                         <a href="#">ABOUT US</a>
                         <a href="#">BLOG</a>
-                        <a href="{% url 'register' %}">JOIN AS A PARTNER asdasdasa</a>
+                        {% if not request.user.username %}
+                            <a href="{% url 'register' %}">JOIN AS A PARTNER </a>
+                        {% endif %}
                         <a href="#">SERVICES</a>
                         <a href="#">APPLY FOR A LOAN</a>
                         <a href="#">GET INSURANCE</a>
@@ -330,7 +352,7 @@
                         <div class="col-lg-5 d-none d-lg-block">
                             <img
                                 class="landing-vector"
-                                src="assets/images/gamer-colour.svg"
+                                src="static/images/gamer-colour.svg"
                                 alt="First slide"
                             />
                         </div>
@@ -537,7 +559,7 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col-4">
                                     <img
-                                        src="assets/images/mobile-post-colour.svg"
+                                        src="static/images/mobile-post-colour.svg"
                                         class="card-img p-3"
                                         alt="..."
                                     />
@@ -571,7 +593,7 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col-4">
                                     <img
-                                        src="assets/images/mobile-post-colour.svg"
+                                        src="static/images/mobile-post-colour.svg"
                                         class="card-img p-3"
                                         alt="..."
                                     />
@@ -605,7 +627,7 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col-4">
                                     <img
-                                        src="assets/images/mobile-post-colour.svg"
+                                        src="static/images/mobile-post-colour.svg"
                                         class="card-img p-3"
                                         alt="..."
                                     />
@@ -637,7 +659,7 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col-4">
                                     <img
-                                        src="assets/images/mobile-post-colour.svg"
+                                        src="static/images/mobile-post-colour.svg"
                                         class="card-img p-3"
                                         alt="..."
                                     />
@@ -671,7 +693,7 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col-4">
                                     <img
-                                        src="assets/images/mobile-post-colour.svg"
+                                        src="static/images/mobile-post-colour.svg"
                                         class="card-img p-3"
                                         alt="..."
                                     />
@@ -703,7 +725,7 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col-4">
                                     <img
-                                        src="assets/images/mobile-post-colour.svg"
+                                        src="static/images/mobile-post-colour.svg"
                                         class="card-img p-3"
                                         alt="..."
                                     />
@@ -735,7 +757,7 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col-4">
                                     <img
-                                        src="assets/images/mobile-post-colour.svg"
+                                        src="static/images/mobile-post-colour.svg"
                                         class="card-img p-3"
                                         alt="..."
                                     />
@@ -849,7 +871,7 @@
                                                 <div class="col-sm-7">
                                                     <img
                                                         class="img-fluid rounded"
-                                                        src="assets/images/1.jpg"
+                                                        src="static/images/1.jpg"
                                                         alt=""
                                                     />
                                                 </div>
@@ -883,7 +905,7 @@
                                                 <div class="col-sm-7">
                                                     <img
                                                         class="img-fluid rounded"
-                                                        src="assets/images/2.jpg"
+                                                        src="static/images/2.jpg"
                                                         alt=""
                                                     />
                                                 </div>
@@ -909,13 +931,13 @@
                                                         most commonly
                                                         non-recourse loans,
                                                         which are secured by the
-                                                        project assets and paid
+                                                        project static and paid
                                                     </p>
                                                 </div>
                                                 <div class="col-sm-7">
                                                     <img
                                                         class="img-fluid rounded"
-                                                        src="assets/images/3.jpg"
+                                                        src="static/images/3.jpg"
                                                         alt=""
                                                     />
                                                 </div>
@@ -1532,7 +1554,7 @@
                             class="avatar rounded-circle with-shadows mb-3 ml-auto mr-auto"
                         >
                             <img
-                                src="assets/images/avatar-1.jpeg"
+                                src="static/images/avatar-1.jpeg"
                                 class="w-100"
                                 alt="Testimonial Avatar"
                             />
@@ -1554,7 +1576,7 @@
                             class="avatar rounded-circle with-shadows mb-3 ml-auto mr-auto"
                         >
                             <img
-                                src="assets/images/avatar-2.jpeg"
+                                src="static/images/avatar-2.jpeg"
                                 class="w-100"
                                 alt="Testimonial Avatar"
                             />
@@ -1575,7 +1597,7 @@
                             class="avatar rounded-circle with-shadows mb-3 ml-auto mr-auto"
                         >
                             <img
-                                src="assets/images/avatar-3.jpeg"
+                                src="static/images/avatar-3.jpeg"
                                 class="w-100"
                                 alt="Testimonial Avatar"
                             />
@@ -1603,7 +1625,7 @@
                         <div class="mb-4 col-md-3">
                             <img
                                 height="40"
-                                src="assets/images/cf-logo - Copy.png"
+                                src="static/images/cf-logo - Copy.png"
                                 class="align-center img-responsive brand-logo1 mb-4"
                                 alt=""
                             />
@@ -1682,15 +1704,15 @@
             </div>
         </section>
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/popper.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/shards.min.js"></script>
-        <script src="assets/js/jquery.waypoints.min.js"></script>
-        <script src="assets/js/jquery.counterup.min.js"></script>
-        <script src="assets/js/home.js"></script>
-        <script src="assets/js/common.js"></script>
-        <script src="assets/js/animation.js"></script>
+        <script src="static/js/jquery.min.js"></script>
+        <script src="static/js/popper.min.js"></script>
+        <script src="static/js/bootstrap.min.js"></script>
+        <script src="static/js/shards.min.js"></script>
+        <script src="static/js/jquery.waypoints.min.js"></script>
+        <script src="static/js/jquery.counterup.min.js"></script>
+        <script src="static/js/home.js"></script>
+        <script src="static/js/common.js"></script>
+        <script src="static/js/animation.js"></script>
         <script>
             // Disable form submissions if there are invalid fields
             (function () {
@@ -1833,4 +1855,6 @@
             });
         </script>
     </body>
+
 </html>
+
